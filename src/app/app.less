@@ -1,0 +1,175 @@
+// Reusable variables
+@accent: #1890ff;
+@white: #fff;
+@header-height: 64px;
+@sider-width: 256px;
+@space-sm: 8px;
+@space-md: 16px;
+@space-lg: 24px;
+@radius-sm: 4px;
+@shadow-sider: 2px 0 6px rgba(0, 21, 41, 0.35);
+@shadow-header: 0 1px 4px rgba(0, 21, 41, 0.08);
+@brand-bg: #001529;
+
+// Utility mixins
+.flex-center(@gap: 0) {
+  display: flex;
+  align-items: center;
+  gap: @gap;
+}
+
+.clickable() {
+  cursor: pointer;
+  transition: all .3s, padding 0s;
+}
+
+.focus-outline(@color: @accent) {
+  outline: 1px solid @color;
+}
+
+.box-shadow(@shadow) {
+  box-shadow: @shadow;
+}
+
+:host {
+  display: flex;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app-layout {
+  height: 100vh;
+}
+
+.menu-sidebar {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  background: @white;
+  border-right: 1px solid #f0f0f0;
+  .box-shadow(@shadow-sider);
+}
+
+.header-trigger {
+  height: @header-height;
+  padding: 20px @space-lg;
+  font-size: 20px;
+  .clickable();
+
+  .trigger:hover {
+    color: @accent;
+  }
+}
+
+.sidebar-logo {
+  position: relative;
+  height: @header-height;
+  padding-left: @space-lg;
+  overflow: hidden;
+  line-height: @header-height;
+  background: @white;
+  color: #000;
+  transition: all .3s;
+
+  img {
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    vertical-align: middle;
+  }
+
+  h1 {
+    display: inline-block;
+    margin: 0 0 0 20px;
+    color: inherit;
+    font-weight: 600;
+    font-size: 14px;
+    font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
+    vertical-align: middle;
+  }
+}
+
+nz-header {
+  padding: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.app-header {
+  position: relative;
+  height: @header-height;
+  padding: 0;
+  background: @white;
+  .box-shadow(@shadow-header);
+}
+
+.lang-switcher {
+  position: absolute;
+  right: @space-md;
+  top: 0;
+  height: @header-height;
+  .flex-center(@space-sm);
+}
+
+// theme toggle styles moved into ThemeToggleComponent
+
+.lang-btn {
+  background: transparent;
+  border: none;
+  padding: 6px;
+  border-radius: @radius-sm;
+  cursor: pointer;
+
+  &[aria-pressed="true"],
+  &:hover {
+    .focus-outline();
+  }
+}
+
+.lang-flag {
+  display: block;
+  box-shadow: 0 0 1px rgba(0, 0, 0, .2);
+}
+
+nz-content {
+  margin: @space-lg;
+}
+
+.inner-content {
+  padding: @space-lg;
+  background: @white;
+  height: 100%;
+}
+
+// Dark theme overrides (respect ancestor on documentElement via :host-context)
+:host-context(.dark-theme) {
+  .app-header {
+    background: #141414;
+    color: #f0f0f0;
+    .box-shadow(0 1px 4px rgba(0, 0, 0, 0.45));
+  }
+
+  .inner-content {
+    background: #1f1f1f;
+    color: #f0f0f0;
+  }
+
+  .sidebar-logo {
+    background: #141414;
+    color: #f0f0f0;
+  }
+
+  .menu-sidebar {
+    background: #141414;
+    border-right: 1px solid #303030;
+  }
+
+  .lang-btn,
+  .theme-btn {
+    &[aria-pressed="true"],
+    &:hover {
+      .focus-outline(#177ddc);
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "app": {
+    "title": "Ant Design of Angular",
+    "menu": {
+      "dashboard": "Dashboard",
+      "welcome": "Welcome",
+      "login": "Login",
+      "form": "Form",
+      "basicForm": "Basic Form"
+    },
+    "actions": {
+      "submit": "Submit",
+      "language": "Language",
+      "english": "English",
+      "czech": "Czech",
+  "dark": "Dark",
+  "light": "Light"
+    }
+  },
+  "login": {
+    "username": "Username",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password",
+    "or": "Or",
+    "registerNow": "register now!",
+    "logIn": "Log in",
+    "errors": {
+      "usernameRequired": "Please input your username!",
+      "passwordRequired": "Please input your password!",
+      "passwordMinLength": "Password must be at least 6 characters!",
+      "usernamePasswordSame": "Username and password cannot be the same!"
+    }
+  },
+  "form": {
+    "layout": "Form Layout",
+    "layoutOptions": {"horizontal": "Horizontal", "vertical": "Vertical", "inline": "Inline"},
+    "fieldA": "Field A",
+    "fieldB": "Field B",
+    "country": "Country",
+    "tags": "Tags",
+    "preferences": "Preferences",
+    "subscribe": "Subscribe to newsletter",
+    "agree": "I agree to the terms",
+    "date": "Date",
+    "dateFormat": "yyyy-MM-dd",
+    "placeholders": {
+      "input": "input placeholder",
+      "country": "Select a country",
+      "tags": "Select tags"
+    },
+    "countries": {
+      "us": "United States",
+      "uk": "United Kingdom",
+      "cn": "China",
+      "de": "Germany"
+    },
+    "errors": {
+      "fieldARequired": "Please input Field A!",
+      "fieldBRequired": "Please input Field B!",
+      "countryRequired": "Please select a country!",
+      "agreeRequired": "You must agree to continue",
+      "dateRequired": "Please select a date!"
+    }
+  },
+  "welcome": {
+    "message": "Welcome"
+  }
+}

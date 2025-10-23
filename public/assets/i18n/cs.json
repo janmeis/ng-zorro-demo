@@ -1,0 +1,69 @@
+{
+  "app": {
+    "title": "Ant Design pro Angular",
+    "menu": {
+      "dashboard": "Přehled",
+      "welcome": "Vítejte",
+      "login": "Přihlášení",
+      "form": "Formulář",
+      "basicForm": "Základní formulář"
+    },
+    "actions": {
+      "submit": "Odeslat",
+      "language": "Jazyk",
+      "english": "Angličtina",
+      "czech": "Čeština",
+  "dark": "Tmavý",
+  "light": "Světlý"
+    }
+  },
+  "login": {
+    "username": "Uživatelské jméno",
+    "password": "Heslo",
+    "rememberMe": "Zapamatovat",
+    "forgotPassword": "Zapomenuté heslo",
+    "or": "nebo",
+    "registerNow": "registrovat nyní!",
+    "logIn": "Přihlásit se",
+    "errors": {
+      "usernameRequired": "Zadejte uživatelské jméno!",
+      "passwordRequired": "Zadejte heslo!",
+      "passwordMinLength": "Heslo musí mít alespoň 6 znaků!",
+      "usernamePasswordSame": "Uživatelské jméno a heslo nesmí být stejné!"
+    }
+  },
+  "form": {
+    "layout": "Formulář",
+    "layoutOptions": {"horizontal": "Horizontální", "vertical": "Vertikální", "inline": "Řádkové"},
+    "fieldA": "Pole A",
+    "fieldB": "Pole B",
+    "country": "Země",
+    "tags": "Štítky",
+    "preferences": "Předvolby",
+    "subscribe": "Odebírat novinky",
+    "agree": "Souhlasím s podmínkami",
+    "date": "Datum",
+    "dateFormat": "dd.MM.yyyy",
+    "placeholders": {
+      "input": "zadejte hodnotu",
+      "country": "Vyberte zemi",
+      "tags": "Vyberte štítky"
+    },
+    "countries": {
+      "us": "Spojené státy",
+      "uk": "Spojené království",
+      "cn": "Čína",
+      "de": "Německo"
+    },
+    "errors": {
+      "fieldARequired": "Zadejte Pole A!",
+      "fieldBRequired": "Zadejte Pole B!",
+      "countryRequired": "Vyberte zemi!",
+      "agreeRequired": "Pro pokračování musíte souhlasit",
+      "dateRequired": "Vyberte datum!"
+    }
+  },
+  "welcome": {
+    "message": "Vítejte"
+  }
+}

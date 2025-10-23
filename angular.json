@@ -7,8 +7,10 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss",
-          "skipTests": true
+          "style": "less",
+          "skipTests": true,
+          "changeDetection": "OnPush",
+          "standalone": true
         },
         "@schematics/angular:class": {
           "skipTests": true
@@ -44,15 +46,26 @@
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
+            "inlineStyleLanguage": "less",
             "assets": [
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/theme.less",
+              "src/styles.less",
+              {
+                "input": "src/theme.dark.less",
+                "bundleName": "theme-dark",
+                "inject": false
+              }
             ],
             "server": "src/main.server.ts",
             "outputMode": "server",
@@ -107,7 +120,7 @@
               "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
+            "inlineStyleLanguage": "less",
             "assets": [
               {
                 "glob": "**/*",
@@ -115,7 +128,7 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.less"
             ]
           }
         }

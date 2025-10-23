@@ -1,0 +1,72 @@
+
+    <form
+      nz-form
+      [nzLayout]="validateForm.controls.formLayout.value"
+      [formGroup]="validateForm"
+      (ngSubmit)="submitForm()"
+    >
+      <nz-form-item>
+        <nz-form-label [nzSpan]="isHorizontal ? 4 : null">{{ 'form.layout' | transloco }}</nz-form-label>
+        <nz-form-control [nzSpan]="isHorizontal ? 14 : null">
+          <nz-radio-group formControlName="formLayout">
+            <label nz-radio-button [nzValue]="'horizontal'">{{ 'form.layoutOptions.horizontal' | transloco }}</label>
+            <label nz-radio-button [nzValue]="'vertical'">{{ 'form.layoutOptions.vertical' | transloco }}</label>
+            <label nz-radio-button [nzValue]="'inline'">{{ 'form.layoutOptions.inline' | transloco }}</label>
+          </nz-radio-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="isHorizontal ? 4 : null">{{ 'form.fieldA' | transloco }}</nz-form-label>
+        <nz-form-control [nzSpan]="isHorizontal ? 14 : null" [nzErrorTip]="('form.errors.fieldARequired' | transloco)">
+          <input nz-input formControlName="fieldA" [attr.placeholder]="('form.placeholders.input' | transloco)" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="isHorizontal ? 4 : null">{{ 'form.fieldB' | transloco }}</nz-form-label>
+        <nz-form-control [nzSpan]="isHorizontal ? 14 : null" [nzErrorTip]="('form.errors.fieldBRequired' | transloco)">
+          <input nz-input formControlName="filedB" [attr.placeholder]="('form.placeholders.input' | transloco)" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="isHorizontal ? 4 : null">{{ 'form.country' | transloco }}</nz-form-label>
+        <nz-form-control [nzSpan]="isHorizontal ? 14 : null" [nzErrorTip]="('form.errors.countryRequired' | transloco)">
+          <nz-select formControlName="country" [nzPlaceHolder]="('form.placeholders.country' | transloco)">
+            @for (opt of countries(); track opt.value) {
+              <nz-option [nzValue]="opt.value" [nzLabel]="('form.countries.' + opt.value | transloco)"></nz-option>
+            }
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="isHorizontal ? 4 : null">{{ 'form.tags' | transloco }}</nz-form-label>
+        <nz-form-control [nzSpan]="isHorizontal ? 14 : null">
+          <nz-select formControlName="tags" nzMode="multiple" [nzPlaceHolder]="('form.placeholders.tags' | transloco)">
+            @for (opt of tagsOptions(); track opt.value) {
+              <nz-option [nzValue]="opt.value" [nzLabel]="opt.label"></nz-option>
+            }
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="isHorizontal ? 4 : null">{{ 'form.preferences' | transloco }}</nz-form-label>
+        <nz-form-control [nzSpan]="isHorizontal ? 14 : null">
+          <label nz-checkbox formControlName="subscribe">{{ 'form.subscribe' | transloco }}</label>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="isHorizontal ? 4 : null">{{ 'form.date' | transloco }}</nz-form-label>
+        <nz-form-control [nzSpan]="isHorizontal ? 14 : null" [nzErrorTip]="('form.errors.dateRequired' | transloco)">
+          <nz-date-picker formControlName="date" [nzPlaceHolder]="('form.date' | transloco)" [nzFormat]="('form.dateFormat' | transloco)"></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control [nzSpan]="isHorizontal ? 14 : null" [nzOffset]="isHorizontal ? 4 : null" [nzErrorTip]="('form.errors.agreeRequired' | transloco)">
+          <label nz-checkbox formControlName="agree">{{ 'form.agree' | transloco }}</label>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control [nzSpan]="isHorizontal ? 14 : null" [nzOffset]="isHorizontal ? 4 : null">
+          <button nz-button nzType="primary">{{ 'app.actions.submit' | transloco }}</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>

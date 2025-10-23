@@ -1,0 +1,43 @@
+
+    <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-control [nzErrorTip]="usernameError()">
+          <nz-input-group nzPrefixIcon="user">
+            <input type="text" nz-input formControlName="username" [attr.placeholder]="('login.username' | transloco)" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control [nzErrorTip]="passwordError()">
+          <nz-input-group nzPrefixIcon="lock" [nzSuffix]="passwordSuffix">
+            <input [type]="passwordVisible() ? 'text' : 'password'" nz-input formControlName="password" [attr.placeholder]="('login.password' | transloco)" />
+          </nz-input-group>
+          <ng-template #passwordSuffix>
+            <button
+              nz-button
+              nzType="text"
+              type="button"
+              class="password-toggle-btn"
+              (click)="passwordVisible.set(!passwordVisible())"
+              [attr.aria-pressed]="passwordVisible()"
+              [attr.aria-label]="('login.password' | transloco)"
+            >
+              <span nz-icon [nzType]="passwordVisible() ? 'eye-invisible' : 'eye'"></span>
+            </button>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <div nz-row class="login-form-margin">
+        <div nz-col [nzSpan]="12">
+          <label nz-checkbox formControlName="remember">
+            <span>{{ 'login.rememberMe' | transloco }}</span>
+          </label>
+        </div>
+        <div nz-col [nzSpan]="12">
+          <a class="login-form-forgot">{{ 'login.forgotPassword' | transloco }}</a>
+        </div>
+      </div>
+      <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" [disabled]="!canSubmit()">{{ 'login.logIn' | transloco }}</button>
+      {{ 'login.or' | transloco }}
+      <a>{{ 'login.registerNow' | transloco }}</a>
+    </form>
