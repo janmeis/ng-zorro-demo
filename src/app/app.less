@@ -128,23 +128,7 @@ nz-header {
 
 // theme toggle styles moved into ThemeToggleComponent
 
-.lang-btn {
-  background: transparent;
-  border: none;
-  padding: 6px;
-  border-radius: @radius-sm;
-  cursor: pointer;
-
-  &[aria-pressed="true"],
-  &:hover {
-    .focus-outline();
-  }
-}
-
-.lang-flag {
-  display: block;
-  box-shadow: 0 0 1px rgba(0, 0, 0, .2);
-}
+// moved to LangSwitcherComponent styles
 
 nz-content {
   margin: @space-lg;
@@ -177,13 +161,5 @@ nz-content {
   .menu-sidebar {
     background: #141414;
     border-right: 1px solid #303030;
-  }
-
-  .lang-btn,
-  .theme-btn {
-    &[aria-pressed="true"],
-    &:hover {
-      .focus-outline(#177ddc);
-    }
   }
 }

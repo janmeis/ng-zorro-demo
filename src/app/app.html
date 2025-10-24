@@ -47,25 +47,7 @@
   </nz-sider>
   <nz-layout>
     <nz-header>
-      <div class="app-header">
-        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
-          <nz-icon class="trigger" [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'" />
-        </span>
-        <div class="lang-switcher">
-          <app-theme-toggle></app-theme-toggle>
-          <button type="button" class="lang-btn" (click)="locale.set('en')" [attr.aria-pressed]="locale.lang()==='en'" [attr.title]="('app.actions.english' | transloco)">
-            <img ngSrc="/assets/flags/gb.svg" width="32" height="16" [attr.alt]="('app.actions.english' | transloco)" class="lang-flag" />
-          </button>
-          <button type="button" class="lang-btn" (click)="locale.set('cs')" [attr.aria-pressed]="locale.lang()==='cs'" [attr.title]="('app.actions.czech' | transloco)">
-            <img ngSrc="/assets/flags/cz.svg" width="24" height="16" [attr.alt]="('app.actions.czech' | transloco)" class="lang-flag" />
-          </button>
-          @if (auth.isAuthenticated()) {
-            <button nz-button nzType="default" (click)="auth.logout()">{{ 'app.actions.logout' | transloco }}</button>
-          } @else {
-            <a nz-button nzType="default" routerLink="/login">{{ 'login.logIn' | transloco }}</a>
-          }
-        </div>
-      </div>
+      <app-header-bar [isCollapsed]="isCollapsed" (toggle)="isCollapsed = !isCollapsed"></app-header-bar>
     </nz-header>
     <nz-content>
       <div class="inner-content">

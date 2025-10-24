@@ -27,6 +27,7 @@ export class BasicTableComponent {
   router: this.router,
   location: this.location,
     urlSync: true,
+    persistKey: 'basic-table',
     pageSizes: [5, 10, 20],
     fetchPage: ({ skip, limit, sortKey, sortOrder }) =>
       this.http

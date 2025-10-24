@@ -15,11 +15,14 @@ export interface PaginatedDataOptions<T> {
   route?: ActivatedRoute;
   router?: Router;
   location?: Location;
+  /** Persist page and size under this key using localStorage (browser-only). */
+  persistKey?: string;
 }
 
 export function createPaginatedDataStore<T>(opts: PaginatedDataOptions<T>) {
   const PAGE_SIZES = (opts.pageSizes ?? [5, 10, 20]) as readonly number[];
   const urlSync = !!opts.urlSync && !!opts.route && !!opts.router;
+  const persistKey = opts.persistKey?.trim();
 
   const readPageFromUrl = () => {
     if (!urlSync || !opts.route) return undefined;
@@ -34,12 +37,30 @@ export function createPaginatedDataStore<T>(opts: PaginatedDataOptions<T>) {
 
   const initialFromUrl = readPageFromUrl();
 
-  const pagination = signal<{ pageIndex: number; pageSize: number }>(
-    {
-      pageIndex: initialFromUrl?.pageIndex ?? opts.initial?.pageIndex ?? 1,
-      pageSize: initialFromUrl?.pageSize ?? opts.initial?.pageSize ?? (PAGE_SIZES[1] ?? 10),
+  const readPersisted = (): { pageIndex?: number; pageSize?: number } | undefined => {
+    if (!persistKey) return undefined;
+    const store = getLocalStorage();
+    if (!store) return undefined;
+    try {
+      const raw = store.getItem(`pager:${persistKey}`);
+      if (!raw) return undefined;
+      const parsed = JSON.parse(raw) as { page?: number; size?: number };
+      const page = Number(parsed.page);
+      const size = Number(parsed.size);
+      return {
+        pageIndex: Number.isFinite(page) && page > 0 ? page : undefined,
+        pageSize: PAGE_SIZES.includes(size) ? size : undefined,
+      };
+    } catch {
+      return undefined;
     }
-  );
+  };
+
+  const persisted = readPersisted();
+  const pagination = signal<{ pageIndex: number; pageSize: number }>({
+    pageIndex: initialFromUrl?.pageIndex ?? persisted?.pageIndex ?? opts.initial?.pageIndex ?? 1,
+    pageSize: initialFromUrl?.pageSize ?? persisted?.pageSize ?? opts.initial?.pageSize ?? (PAGE_SIZES[1] ?? 10),
+  });
 
   const loading = signal(true);
   const total = signal(0);
@@ -68,6 +89,18 @@ export function createPaginatedDataStore<T>(opts: PaginatedDataOptions<T>) {
     ),
     { initialValue: [] as T[] }
   );
+
+  // Persist page and size when they change (browser-only)
+  if (persistKey) {
+    effect(() => {
+      const p = pagination();
+      const isBrowser = typeof window !== 'undefined' && !!window.localStorage;
+      if (!isBrowser) return;
+      try {
+        window.localStorage.setItem(`pager:${persistKey}`,(JSON.stringify({ page: p.pageIndex, size: p.pageSize })));
+      } catch {}
+    });
+  }
 
   // URL -> state
   if (urlSync) {
@@ -181,4 +214,11 @@ export function createPaginatedDataStore<T>(opts: PaginatedDataOptions<T>) {
     onSortChange,
     setPagination,
   } as const;
+}
+
+function getLocalStorage(): Storage | null {
+  try {
+    if (typeof window !== 'undefined' && 'localStorage' in window) return window.localStorage;
+  } catch {}
+  return null;
 }
