@@ -6,7 +6,8 @@ import {
   EyeOutline,
   EyeInvisibleOutline,
   UserOutline,
-  LockOutline
+  LockOutline,
+  TableOutline
 } from '@ant-design/icons-angular/icons';
 
 export const icons = [
@@ -17,5 +18,6 @@ export const icons = [
   EyeOutline,
   EyeInvisibleOutline,
   UserOutline,
-  LockOutline
+  LockOutline,
+  TableOutline
 ];

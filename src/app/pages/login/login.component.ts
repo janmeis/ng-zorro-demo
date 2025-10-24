@@ -2,12 +2,14 @@ import { ChangeDetectionStrategy, Component, computed, effect, inject, signal } 
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslocoPipe, TranslocoService } from '@ngneat/transloco';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +21,9 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 export class LoginComponent {
   private fb = inject(NonNullableFormBuilder);
   private t = inject(TranslocoService);
+  private auth = inject(AuthService);
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
   validateForm = this.fb.group({
     username: this.fb.control('', [Validators.required]),
     password: this.fb.control('', [Validators.required, Validators.minLength(6)]),
@@ -72,7 +77,12 @@ export class LoginComponent {
 
   submitForm(): void {
     if (this.validateForm.valid) {
-      console.log('submit', this.validateForm.value);
+      const { username, password, remember } = this.validateForm.getRawValue();
+      const ok = this.auth.login(username!, password!, !!remember);
+      if (ok) {
+        const redirectUrl = this.route.snapshot.queryParamMap.get('redirectUrl') || '/welcome';
+        this.router.navigateByUrl(redirectUrl);
+      }
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
         if (control.invalid) {

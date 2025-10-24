@@ -6,7 +6,9 @@
       "welcome": "Vítejte",
       "login": "Přihlášení",
       "form": "Formulář",
-      "basicForm": "Základní formulář"
+      "basicForm": "Základní formulář",
+      "table": "Tabulka",
+      "basicTable": "Základní tabulka"
     },
     "actions": {
       "submit": "Odeslat",
@@ -14,7 +16,8 @@
       "english": "Angličtina",
       "czech": "Čeština",
   "dark": "Tmavý",
-  "light": "Světlý"
+  "light": "Světlý",
+      "logout": "Odhlásit se"
     }
   },
   "login": {
@@ -65,5 +68,24 @@
   },
   "welcome": {
     "message": "Vítejte"
+  },
+  "basicTable": {
+    "headers": {
+      "avatar": "Avatar",
+      "fullName": "Celé jméno",
+      "age": "Věk",
+      "gender": "Pohlaví",
+      "email": "E-mail",
+      "phone": "Telefon",
+      "city": "Město",
+      "country": "Země",
+      "company": "Společnost"
+    },
+    "values": {
+      "gender": {
+        "male": "Muž",
+        "female": "Žena"
+      }
+    }
   }
 }

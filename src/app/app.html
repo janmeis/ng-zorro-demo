@@ -36,6 +36,13 @@
           </li>
         </ul>
       </li>
+      <li nz-submenu nzOpen [nzTitle]="('app.menu.table' | transloco)" nzIcon="table">
+        <ul>
+          <li nz-menu-item nzMatchRouter [nzSelected]="isActive('/basic-table')">
+            <a routerLink="/basic-table">{{ 'app.menu.basicTable' | transloco }}</a>
+          </li>
+        </ul>
+      </li>
     </ul>
   </nz-sider>
   <nz-layout>
@@ -52,6 +59,11 @@
           <button type="button" class="lang-btn" (click)="locale.set('cs')" [attr.aria-pressed]="locale.lang()==='cs'" [attr.title]="('app.actions.czech' | transloco)">
             <img ngSrc="/assets/flags/cz.svg" width="24" height="16" [attr.alt]="('app.actions.czech' | transloco)" class="lang-flag" />
           </button>
+          @if (auth.isAuthenticated()) {
+            <button nz-button nzType="default" (click)="auth.logout()">{{ 'app.actions.logout' | transloco }}</button>
+          } @else {
+            <a nz-button nzType="default" routerLink="/login">{{ 'login.logIn' | transloco }}</a>
+          }
         </div>
       </div>
     </nz-header>
