@@ -12,6 +12,8 @@
     "src/**/*.ts"
   ],
   "exclude": [
-    "src/**/*.spec.ts"
+    "src/**/*.spec.ts",
+    "src/app/pages/user-table/**",
+    "src/app/models/column-item.model.ts"
   ]
 }

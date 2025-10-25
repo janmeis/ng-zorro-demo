@@ -27,7 +27,7 @@ export class LoginComponent {
   validateForm = this.fb.group({
     username: this.fb.control('', [Validators.required]),
     password: this.fb.control('', [Validators.required, Validators.minLength(6)]),
-    remember: this.fb.control(true)
+    remember: this.fb.control(false)
   });
 
   // controls visibility of the password input

@@ -7,16 +7,16 @@
       "login": "Přihlášení",
       "form": "Formulář",
       "basicForm": "Základní formulář",
-      "table": "Tabulka",
-      "basicTable": "Základní tabulka"
+  "table": "Tabulka",
+  "advancedTable": "Pokročilá tabulka"
     },
     "actions": {
       "submit": "Odeslat",
       "language": "Jazyk",
       "english": "Angličtina",
       "czech": "Čeština",
-  "dark": "Tmavý",
-  "light": "Světlý",
+      "dark": "Tmavý",
+      "light": "Světlý",
       "logout": "Odhlásit se"
     }
   },
@@ -37,7 +37,11 @@
   },
   "form": {
     "layout": "Formulář",
-    "layoutOptions": {"horizontal": "Horizontální", "vertical": "Vertikální", "inline": "Řádkové"},
+    "layoutOptions": {
+      "horizontal": "Horizontální",
+      "vertical": "Vertikální",
+      "inline": "Řádkové"
+    },
     "fieldA": "Pole A",
     "fieldB": "Pole B",
     "country": "Země",
@@ -69,17 +73,16 @@
   "welcome": {
     "message": "Vítejte"
   },
-  "basicTable": {
+  "advancedTable": {
     "headers": {
-      "avatar": "Avatar",
-      "fullName": "Celé jméno",
-      "age": "Věk",
+      "name": "Jméno",
       "gender": "Pohlaví",
       "email": "E-mail",
-      "phone": "Telefon",
+      "username": "Uživatelské jméno",
+      "age": "Věk",
       "city": "Město",
-      "country": "Země",
-      "company": "Společnost"
+      "birthDate": "Datum narození",
+      "address": "Adresa"
     },
     "values": {
       "gender": {

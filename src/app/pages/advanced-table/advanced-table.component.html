@@ -1,0 +1,49 @@
+<nz-table
+  #table
+  nzShowSizeChanger
+  [nzData]="users()"
+  [nzFrontPagination]="false"
+  [nzLoading]="loading"
+  [nzTotal]="total"
+  [nzPageSize]="pageSize"
+  [nzPageIndex]="pageIndex"
+  (nzQueryParams)="onQueryParamsChange($event)">
+  <thead>
+    <tr>
+      <th nzColumnKey="name" [nzSortFn]="true" nzShowSort>
+        {{ 'advancedTable.headers.name' | transloco }}
+      </th>
+      <th nzColumnKey="gender" [nzFilters]="genderFilters()" [nzFilterFn]="true" [nzShowFilter]="true">
+        {{ 'advancedTable.headers.gender' | transloco }}
+      </th>
+      <th nzColumnKey="email" [nzSortFn]="true" nzShowSort>
+        {{ 'advancedTable.headers.email' | transloco }}
+      </th>
+      <th nzColumnKey="username" [nzSortFn]="true" nzShowSort>
+        {{ 'advancedTable.headers.username' | transloco }}
+      </th>
+      <th nzColumnKey="age" [nzSortFn]="true" nzShowSort>
+        {{ 'advancedTable.headers.age' | transloco }}
+      </th>
+      <th nzColumnKey="city" [nzSortFn]="true" nzShowSort>
+        {{ 'advancedTable.headers.city' | transloco }}
+      </th>
+      <th nzColumnKey="birthDate" [nzSortFn]="true" nzShowSort>
+        {{ 'advancedTable.headers.birthDate' | transloco }}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (data of table.data; track data.email) {
+    <tr>
+      <td>{{ data.name }}</td>
+      <td>{{ ('advancedTable.values.gender.' + data.gender) | transloco }}</td>
+      <td>{{ data.email }}</td>
+      <td>{{ data.username }}</td>
+      <td>{{ data.age }}</td>
+      <td>{{ data.city }}</td>
+      <td>{{ data.birthDate | localDate:'mediumDate' }}</td>
+    </tr>
+    }
+  </tbody>
+</nz-table>

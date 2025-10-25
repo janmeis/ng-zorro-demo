@@ -8,15 +8,16 @@
       "form": "Form",
       "basicForm": "Basic Form",
       "table": "Table",
-      "basicTable": "Basic Table"
+  "advancedTable": "Advanced Table"
+
     },
     "actions": {
       "submit": "Submit",
       "language": "Language",
       "english": "English",
       "czech": "Czech",
-  "dark": "Dark",
-  "light": "Light",
+      "dark": "Dark",
+      "light": "Light",
       "logout": "Log out"
     }
   },
@@ -37,7 +38,11 @@
   },
   "form": {
     "layout": "Form Layout",
-    "layoutOptions": {"horizontal": "Horizontal", "vertical": "Vertical", "inline": "Inline"},
+    "layoutOptions": {
+      "horizontal": "Horizontal",
+      "vertical": "Vertical",
+      "inline": "Inline"
+    },
     "fieldA": "Field A",
     "fieldB": "Field B",
     "country": "Country",
@@ -69,17 +74,16 @@
   "welcome": {
     "message": "Welcome"
   },
-  "basicTable": {
+  "advancedTable": {
     "headers": {
-      "avatar": "Avatar",
-      "fullName": "Full Name",
-      "age": "Age",
+      "name": "Name",
       "gender": "Gender",
       "email": "Email",
-      "phone": "Phone",
+      "username": "Username",
+      "age": "Age",
       "city": "City",
-      "country": "Country",
-      "company": "Company"
+      "birthDate": "Birth date",
+      "address": "Address"
     },
     "values": {
       "gender": {

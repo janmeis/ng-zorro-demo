@@ -1,4 +1,5 @@
 import { Injectable, computed, inject, signal } from '@angular/core';
+import { Router } from '@angular/router';
 
 /**
  * Simple auth service using Angular signals.
@@ -9,6 +10,7 @@ import { Injectable, computed, inject, signal } from '@angular/core';
 export class AuthService {
   private readonly _isAuthenticated = signal<boolean>(false);
   private readonly _username = signal<string | null>(null);
+  private readonly _router = inject(Router);
 
   // public read-only selectors
   readonly isAuthenticated = computed(() => this._isAuthenticated());
@@ -51,6 +53,8 @@ export class AuthService {
     getSessionStorage()?.removeItem(AUTH_USERNAME_KEY);
     this._isAuthenticated.set(false);
     this._username.set(null);
+    // redirect to login
+    this._router.navigateByUrl('/login');
   }
 }
 

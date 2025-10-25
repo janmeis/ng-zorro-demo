@@ -1,1 +1,1 @@
-export * from './basic-table-row.model';
+export * from './dummy-user.model';

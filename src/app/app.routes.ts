@@ -6,5 +6,5 @@ export const routes: Routes = [
   { path: 'welcome', canActivate: [authGuard], loadChildren: () => import('./pages/welcome/welcome.routes').then(m => m.WELCOME_ROUTES) },
   { path: 'login', loadChildren: () => import('./pages/login/login.routes').then(m => m.LOGIN_ROUTES) },
   { path: 'basic-form', canActivate: [authGuard], loadChildren: () => import('./pages/basic-form/basic-form.routes').then(m => m.BASIC_FORM_ROUTES) },
-  { path: 'basic-table', canActivate: [authGuard], loadChildren: () => import('./pages/basic-table/basic-table.routes').then(m => m.BASIC_TABLE_ROUTES) }
+  { path: 'advanced-table', canActivate: [authGuard], loadChildren: () => import('./pages/advanced-table/advanced-table.routes').then(m => m.ADVANCED_TABLE_ROUTES) },
 ];
